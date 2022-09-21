@@ -59,6 +59,7 @@ public class UpdateServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 // データベースに保存
+                em.getTransaction().begin();
                 em.persist(m);
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
